@@ -54,6 +54,7 @@ set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
 set novisualbell  " No blinking .
 set noerrorbells  " No noise.
 set laststatus=2  " Always show status line.
+set hlsearch
 
 " gvim specific
 set mousehide  " Hide mouse after chars typed
@@ -78,7 +79,7 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
-"Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-fugitive'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
@@ -86,6 +87,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-cucumber'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'vimux'
 " vim-scripts repos
 "Bundle 'L9'
 "Bundle 'FuzzyFinder'
@@ -95,3 +98,6 @@ Bundle 'kchmck/vim-coffee-script'
 
 filetype plugin indent on     " required!
 
+" Remove trailing whitspace 
+" http://vimcasts.org/episodes/tidying-whitespace/
+nnoremap cw :%s/\s\+$//e<CR>
