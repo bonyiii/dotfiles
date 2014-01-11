@@ -1,4 +1,5 @@
-my_vimrc
+My tools configs 
 ========
 
-my_vimrc
+.vimrc
+.tmux.conf
