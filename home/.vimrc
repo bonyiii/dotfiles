@@ -82,13 +82,16 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-rails.git'
 Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-cucumber'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'vimux'
+Bundle 'claco/jasmine.vim'
+Bundle 'ivalkeen/vim-ctrlp-tjump'
+
 " vim-scripts repos
 "Bundle 'L9'
 "Bundle 'FuzzyFinder'
