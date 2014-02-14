@@ -1,4 +1,4 @@
-My dotfile config
+My dotfile configs
 ========
 
 * .vimrc
