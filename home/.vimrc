@@ -131,6 +131,7 @@ Bundle 'elixir-lang/vim-elixir'
 Bundle 'vimux'
 Bundle 'claco/jasmine.vim'
 Bundle 'ivalkeen/vim-ctrlp-tjump'
+Bundle 'gregsexton/gitv'
 
 " vim-scripts repos
 "Bundle 'L9'
