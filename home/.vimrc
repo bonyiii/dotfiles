@@ -121,6 +121,7 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 " original repos on github
 Bundle 'tpope/vim-fugitive'
+Bundle 'gregsexton/gitv'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-endwise'
