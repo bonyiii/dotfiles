@@ -132,6 +132,7 @@ Bundle 'vimux'
 Bundle 'claco/jasmine.vim'
 Bundle 'ivalkeen/vim-ctrlp-tjump'
 Bundle 'gregsexton/gitv'
+Bundle 'yaymukund/vim-rabl'
 
 " vim-scripts repos
 "Bundle 'L9'
@@ -147,3 +148,7 @@ nnoremap cw :%s/\s\+$//e<CR>
 " An excellent expanation wtf nnoremap is! normal mode non recursive mapping
 " http://stackoverflow.com/questions/3776117/vim-what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-ma
 nnoremap <Leader>tj :CtrlPtjump<cr>
+
+" Move back and forth in git history
+nnoremap <Leader>n :cnext<cr>
+nnoremap <Leader>r :cprev<cr>
