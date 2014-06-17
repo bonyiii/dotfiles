@@ -1,7 +1,7 @@
 " http://biodegradablegeek.com/2007/12/using-vim-as-a-complete-ruby-on-rails-ide/#config
 set nocompatible  " We don't want vi compatibility.
 
-" Add recently accessed projects menu (project plugin)
+" Add recently accessed projects menu (project plugin)gregsexton/
 set viminfo^=!
 
 " Minibuffer Explorer Settings
@@ -112,27 +112,27 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 " Vundle settings
 filetype off                   " required!¬
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 "let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-" My Bundles here:
+" My Plugins here:
 " original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'gregsexton/gitv'
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-endwise'
-Bundle 'kien/ctrlp.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'vimux'
-Bundle 'claco/jasmine.vim'
-Bundle 'ivalkeen/vim-ctrlp-tjump'
-Bundle 'gregsexton/gitv'
-Bundle 'yaymukund/vim-rabl'
+Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
+Plugin 'tpope/vim-rails.git'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-endwise'
+Plugin 'kien/ctrlp.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'vimux'
+Plugin 'claco/jasmine.vim'
+Plugin 'ivalkeen/vim-ctrlp-tjump'
+Plugin 'gregsexton/gitv', {'name': 'gregsexton/gitv'}
+Plugin 'yaymukund/vim-rabl'
 
 " vim-scripts repos
 "Bundle 'L9'
@@ -140,6 +140,7 @@ Bundle 'yaymukund/vim-rabl'
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
 
+call vundle#end()
 filetype plugin indent on     " required!
 
 " Remove trailing whitspace
@@ -152,3 +153,4 @@ nnoremap <Leader>tj :CtrlPtjump<cr>
 " Move back and forth in git history
 nnoremap <Leader>n :cnext<cr>
 nnoremap <Leader>r :cprev<cr>
+cabbrev Ex Explore
