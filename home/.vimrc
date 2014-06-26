@@ -133,6 +133,7 @@ Plugin 'claco/jasmine.vim'
 Plugin 'ivalkeen/vim-ctrlp-tjump'
 Plugin 'gregsexton/gitv', {'name': 'gregsexton/gitv'}
 Plugin 'yaymukund/vim-rabl'
+Plugin 'ekalinin/Dockerfile.vim'
 
 " vim-scripts repos
 "Bundle 'L9'
