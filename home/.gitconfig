@@ -1,0 +1,21 @@
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	last = log -1 HEAD
+	prlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
+[user]
+	name = boni
+	email = boni@twine.hu
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[merge]
+	atool = kdiff3
+[push]
+	default = current
+
+[init]
+	templatedir = ~/.git_template
