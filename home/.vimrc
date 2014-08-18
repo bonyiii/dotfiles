@@ -22,6 +22,8 @@ syntax enable
 " SuSE default better but this is the 2nd best ;)
 " colorscheme ron
 
+" make diff readable if terminal 256 colors
+set t_Co=256
 "set cf  " Enable error files & error jumping.
 set clipboard+=unnamed  " Yanks go on clipboard instead.
 set history=256  " Number of things to remember in history.
@@ -155,3 +157,10 @@ nnoremap <Leader>tj :CtrlPtjump<cr>
 nnoremap <Leader>n :cnext<cr>
 nnoremap <Leader>r :cprev<cr>
 cabbrev Ex Explore
+
+" help pastetoggle
+map <F10> :set paste<CR>
+map <F11> :set nopaste<CR>
+imap <F10> <C-O>:set paste<CR>
+imap <F11> <nop>
+set pastetoggle=<F11>
