@@ -118,7 +118,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 "let Vundle manage Vundle
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " My Plugins here:
 " original repos on github
@@ -144,7 +144,7 @@ Plugin 'tomasr/molokai'
 Plugin 'endel/vim-github-colorscheme'
 
 " wtf???
-"Plugin 'https://github.com/lmeijvogel/vim-yaml-helper'
+Plugin 'https://github.com/lmeijvogel/vim-yaml-helper.git'
 
 "Plugin 'Floobits/floobits-vim'
 
@@ -172,6 +172,7 @@ function! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfunction
 autocmd BufWritePre *.rb :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.feature :call <SID>StripTrailingWhitespaces()
 
 " An excellent expanation wtf nnoremap is! normal mode non recursive mapping
 " http://stackoverflow.com/questions/3776117/vim-what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-ma
