@@ -123,7 +123,6 @@ Plugin 'gmarik/Vundle.vim'
 " My Plugins here:
 " original repos on github
 Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-endwise'
@@ -136,6 +135,8 @@ Plugin 'ivalkeen/vim-ctrlp-tjump'
 Plugin 'gregsexton/gitv', {'name': 'gregsexton/gitv'}
 Plugin 'yaymukund/vim-rabl'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'bling/vim-airline'
 
 " Themes
 Plugin 'sickill/vim-monokai'
