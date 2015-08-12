@@ -118,12 +118,11 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 "let Vundle manage Vundle
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " My Plugins here:
 " original repos on github
 Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-endwise'
@@ -136,7 +135,21 @@ Plugin 'ivalkeen/vim-ctrlp-tjump'
 Plugin 'gregsexton/gitv', {'name': 'gregsexton/gitv'}
 Plugin 'yaymukund/vim-rabl'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'leafgarland/typescript-vim'
+" vim powerline
+Plugin 'bling/vim-airline'
+" React jsx
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+" Themes
 Plugin 'sickill/vim-monokai'
+Plugin 'vim-scripts/C64.vim'
+Plugin 'tomasr/molokai'
+Plugin 'endel/vim-github-colorscheme'
+
+" wtf???
+Plugin 'https://github.com/lmeijvogel/vim-yaml-helper.git'
 
 " vim-scripts repos
 "Bundle 'L9'
@@ -150,6 +163,20 @@ filetype plugin indent on     " required!
 " Remove trailing whitspace
 " http://vimcasts.org/episodes/tidying-whitespace/
 nnoremap cw :%s/\s\+$//e<CR>
+function! <SID>StripTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+autocmd BufWritePre *.rb :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.feature :call <SID>StripTrailingWhitespaces()
+
 " An excellent expanation wtf nnoremap is! normal mode non recursive mapping
 " http://stackoverflow.com/questions/3776117/vim-what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-ma
 nnoremap <Leader>tj :CtrlPtjump<cr>
@@ -159,9 +186,22 @@ nnoremap <Leader>n :cnext<cr>
 nnoremap <Leader>r :cprev<cr>
 cabbrev Ex Explore
 
+" http://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally
+"nnoremap <C-j> <C-W><C-J>
+"nnoremap <C-k> <C-W><C-K>
+"nnoremap <C-l> <C-W><C-L>
+"nnoremap <C-h> <C-W><C-H>
+
 " help pastetoggle
 map <F10> :set paste<CR>
 map <F11> :set nopaste<CR>
 imap <F10> <C-O>:set paste<CR>
 imap <F11> <nop>
 set pastetoggle=<F11>
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " " render properly when inside 256-color tmux and GNU screen.
+  " " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
