@@ -1,21 +1,22 @@
 [alias]
-	st = status
-	co = checkout
-	ci = commit
-	br = branch
-	last = log -1 HEAD
-	prlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
+  st = status
+  co = checkout
+  ci = commit
+  br = branch
+  last = log -1 HEAD
+  prlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
+  relog = log --branches --remotes --tags --graph --oneline --decorate
 [user]
-	name = boni
-	email = boni@twine.hu
+  name = boni
+  email = boni@twine.hu
 [color]
-	branch = auto
-	diff = auto
-	status = auto
+  branch = auto
+  diff = auto
+  status = auto
 [merge]
-	atool = kdiff3
+  atool = kdiff3
 [push]
-	default = current
+  default = current
 
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
