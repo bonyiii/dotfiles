@@ -124,6 +124,7 @@ Plugin 'gmarik/Vundle.vim'
 " original repos on github
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails.git'
+Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-endwise'
 Plugin 'kien/ctrlp.vim'
@@ -132,11 +133,12 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'vimux'
 Plugin 'claco/jasmine.vim'
 Plugin 'ivalkeen/vim-ctrlp-tjump'
-Plugin 'gregsexton/gitv', {'name': 'gregsexton/gitv'}
+Plugin 'gregsexton/gitv'
 Plugin 'yaymukund/vim-rabl'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'bling/vim-airline'
+"Plugin 'https://github.com/vimtaku/hl_matchit.vim'
 
 " Themes
 Plugin 'sickill/vim-monokai'
@@ -203,3 +205,9 @@ if &term =~ '256color'
   " " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
+
+" Bulition from 7.3 just runtime it here
+"runtime macros/matchit.vim
+
+" hl_mathchit plugin
+"let g:hl_matchit_enable_on_vim_startup = 1
