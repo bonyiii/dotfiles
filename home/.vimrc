@@ -137,8 +137,11 @@ Plugin 'gregsexton/gitv'
 Plugin 'yaymukund/vim-rabl'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'leafgarland/typescript-vim'
+" vim powerline
 Plugin 'bling/vim-airline'
-"Plugin 'https://github.com/vimtaku/hl_matchit.vim'
+" React jsx
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 " Themes
 Plugin 'sickill/vim-monokai'
@@ -148,8 +151,6 @@ Plugin 'endel/vim-github-colorscheme'
 
 " wtf???
 Plugin 'https://github.com/lmeijvogel/vim-yaml-helper.git'
-
-"Plugin 'Floobits/floobits-vim'
 
 " vim-scripts repos
 "Bundle 'L9'
