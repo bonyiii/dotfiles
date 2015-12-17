@@ -206,9 +206,3 @@ if &term =~ '256color'
   " " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
-
-" Bulition from 7.3 just runtime it here
-"runtime macros/matchit.vim
-
-" hl_mathchit plugin
-"let g:hl_matchit_enable_on_vim_startup = 1
