@@ -1,3 +1,4 @@
 .config
 .kde/share/config
+.emacs.d
 bin
