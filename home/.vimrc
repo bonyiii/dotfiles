@@ -176,6 +176,7 @@ function! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfunction
 autocmd BufWritePre *.rb :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.ex :call <SID>StripTrailingWhitespaces()
 autocmd BufWritePre *.feature :call <SID>StripTrailingWhitespaces()
 
 " An excellent expanation wtf nnoremap is! normal mode non recursive mapping
