@@ -11,13 +11,14 @@ synclient VertHysteresis=10
 #synclient AreaLeftEdge=200
 #synclient AreaTopEdge=300
 
-synclient PalmMinWidth=8
-synclient EmulateTwoFingerMinW=6
+synclient PalmMinWidth=5
+synclient EmulateTwoFingerMinW=4
 # Ez is nagyon fontos, hogy milyen nyomástól kezdje el két újasként érzékelni ha csak felette lebeg a tenyére akor ne ugráljon
 synclient EmulateTwoFingerMinZ=250
 # Szerintem ezek voltak a legfontosabbak
 synclient PalmDetect=1
-synclient PalmMinZ=20
+synclient PalmMinZ=1
+
 
 synclient RTCornerButton=0
 synclient RBCornerButton=0
@@ -34,3 +35,10 @@ synclient TapAndDragGesture=0
 # https://help.ubuntu.com/community/SynapticsTouchpad
 # http://www.x.org/archive/X11R7.5/doc/man/man4/synaptics.4.html
 xinput --set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 5 15 30
+
+
+sleep 0.1
+# https://ianrenton.com/guides/howto-linux-and-synaptics-touchpads-for-little-fingers/
+synclient FingerHigh=20
+sleep 0.1
+synclient FingerLow=17
