@@ -11,11 +11,17 @@
 (package-initialize)
 (setq ggp-required-packages
       (list
+       'init-loader
        'alchemist
        'base16-theme
        'elixir-mode
        'robe
        'which-key))
+
+(require 'init-loader)
+(setq init-loader-show-log-after-init nil)
+(init-loader-load "~/.emacs.d/inits")
+
 (dolist (package ggp-required-packages)
   (when (not (package-installed-p package))
     (package-refresh-contents)
@@ -26,7 +32,7 @@
 
 ;; global modes
 (which-key-mode t)
-(cua-mode t)
+;;(cua-mode t)
 
 ;; programming modes
 (add-hook 'ggp-code-modes-hook
@@ -53,8 +59,29 @@
             (robe-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
+;; web mode
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.s?css$" . web-mode))
+(defadvice web-mode-highlight-part (around tweak-jsx activate)
+  (if (equal web-mode-content-type "jsx")
+      (let ((web-mode-enable-part-face nil))
+        ad-do-it)
+    ad-do-it))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (run-hooks 'ggp-code-modes-hook)))
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-enable-css-colorization t)
+
+;; javascript mode
+(add-hook 'js-mode-hook
+          (lambda ()
+            (run-hooks 'ggp-code-modes-hook)))
+
 ;; keybinds
-(global-set-key (kbd "C-/") 'company-complete)
+(global-set-key (kbd "C-6") 'company-complete)
 (global-set-key (kbd "C-M-f") 'fiplr-find-file)
 ;;(global-set-key (kbd "C-x <prior>") 'windmove-left)
 ;;(global-set-key (kbd "C-x <next>") 'windmove-right)
@@ -66,3 +93,12 @@
 
 (setq fiplr-ignored-globs '((directories (".git" ".svn" "node_modules" "_build"))
                             (files ("*.jpg" "*.png" "*.zip" "*~"))))
+
+;; store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+;; replace buffer-menu with ibuffer
+(global-set-key (kbd "C-x C-b") #'ibuffer)
