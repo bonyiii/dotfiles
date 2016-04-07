@@ -17,6 +17,8 @@ let g:miniBufExplModSelTarget = 1
 " Change which file opens after executing :Rails command
 let g:rails_default_file='config/database.yml'
 
+"let g:syntastic_ruby_checkers=['mri','rubocop']
+
 syntax enable
 
 " SuSE default better but this is the 2nd best ;)
@@ -137,6 +139,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'yaymukund/vim-rabl'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'rking/ag.vim'
 " vim powerline
 Plugin 'bling/vim-airline'
 " React jsx

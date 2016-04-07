@@ -39,6 +39,6 @@ xinput --set-prop "ETPS/2 Elantech Touchpad" "Synaptics Finger" 5 15 30
 
 sleep 0.1
 # https://ianrenton.com/guides/howto-linux-and-synaptics-touchpads-for-little-fingers/
-synclient FingerHigh=20
+synclient FingerHigh=18
 sleep 0.1
-synclient FingerLow=17
+synclient FingerLow=12
