@@ -57,6 +57,8 @@
 (add-hook 'ruby-mode-hook
           (lambda ()
             (robe-mode 1)
+;;            (rubocop-mode 1)
+;;            (add-hook 'after-save-hook 'rubocop-autocorrect-current-file nil 'make-it-local)
             (run-hooks 'ggp-code-modes-hook)))
 
 ;; web mode
@@ -102,3 +104,27 @@
 
 ;; replace buffer-menu with ibuffer
 (global-set-key (kbd "C-x C-b") #'ibuffer)
+
+(global-set-key (kbd "C-c g") 'helm-git-grep)
+;; Invoke `helm-git-grep' from isearch.
+(define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
+;; Invoke `helm-git-grep' from other helm.
+(eval-after-load 'helm
+  '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
+(custom-set-variables
+  '(robe-completing-read-func 'helm-robe-completing-read))
+
+;; Taken from https://github.com/avdi/.emacs24.d/blob/master/init.el
+(setq abg-emacs-init-file (or load-file-name buffer-file-name))
+(setq abg-emacs-config-dir
+      (file-name-directory abg-emacs-init-file))
+(setq abg-init-dir
+      (expand-file-name "init.d" abg-emacs-config-dir))
+;; Load all elisp files in ./init.d
+(if (file-exists-p abg-init-dir)
+    (dolist (file (directory-files abg-init-dir t "\\.el$"))
+      (load file)))
+
+;; https://github.com/glen-dai/highlight-global config
+(global-set-key (kbd "M-+") 'highlight-frame-toggle)
+(global-set-key (kbd "M--") 'clear-highlight-frame)
