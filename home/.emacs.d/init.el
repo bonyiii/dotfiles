@@ -62,8 +62,11 @@
             (run-hooks 'ggp-code-modes-hook)))
 
 ;; web mode
+;; React jsx templates
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.s?css$" . web-mode))
+;; elixir template
+(add-to-list 'auto-mode-alist '("\\.eex$" . web-mode))
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
   (if (equal web-mode-content-type "jsx")
       (let ((web-mode-enable-part-face nil))
@@ -85,9 +88,14 @@
 ;; keybinds
 (global-set-key (kbd "C-6") 'company-complete)
 (global-set-key (kbd "C-M-f") 'fiplr-find-file)
+
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
 ;;(global-set-key (kbd "C-x <prior>") 'windmove-left)
 ;;(global-set-key (kbd "C-x <next>") 'windmove-right)
- (setq whitespace-display-mappings
+(setq whitespace-display-mappings
           '((space-mark   ?\    [?\xB7]     [?.])	; space
             (space-mark   ?\xA0 [?\xA4]     [?_])	; hard space
             (newline-mark ?\n   [?¬ ?\n] [?¬ ?\n])	; end-of-line
