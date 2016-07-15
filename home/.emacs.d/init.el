@@ -11,16 +11,15 @@
 (package-initialize)
 (setq ggp-required-packages
       (list
-       'init-loader
        'alchemist
        'base16-theme
        'elixir-mode
-       'robe
+       'helm-git-grep
+       'helm-ls-git
+       'auto-complete
+       'ac-etags
+       'web-mode
        'which-key))
-
-(require 'init-loader)
-(setq init-loader-show-log-after-init nil)
-(init-loader-load "~/.emacs.d/inits")
 
 (dolist (package ggp-required-packages)
   (when (not (package-installed-p package))
@@ -38,8 +37,10 @@
 (add-hook 'ggp-code-modes-hook
           (lambda ()
             (linum-mode 1)
-            (company-mode 1)
+;; commented out since now i use ac-etags
+            ;;(company-mode 1)
             (whitespace-mode 1)
+            (ac-etags-ac-setup)
             (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 
 ;; elixir mode
@@ -56,16 +57,20 @@
 ;; ruby mode
 (add-hook 'ruby-mode-hook
           (lambda ()
-            (robe-mode 1)
 ;;            (rubocop-mode 1)
 ;;            (add-hook 'after-save-hook 'rubocop-autocorrect-current-file nil 'make-it-local)
             (run-hooks 'ggp-code-modes-hook)))
 
+(add-hook 'haml-mode-hook
+          (lambda ()
+            (run-hooks 'ggp-code-modes-hook)))
+
 ;; web mode
-;; React jsx templates
+(add-hook 'web-mode-hook 'ac-etags-ac-setup)
+;; web mode React jsx templates
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.s?css$" . web-mode))
-;; elixir template
+;; web mode elixir template
 (add-to-list 'auto-mode-alist '("\\.eex$" . web-mode))
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
   (if (equal web-mode-content-type "jsx")
@@ -75,6 +80,7 @@
 (add-hook 'web-mode-hook
           (lambda ()
             (run-hooks 'ggp-code-modes-hook)))
+
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
@@ -85,9 +91,12 @@
           (lambda ()
             (run-hooks 'ggp-code-modes-hook)))
 
+;; coffee mode
+(setq coffee-tab-width 2)
+
 ;; keybinds
 (global-set-key (kbd "C-6") 'company-complete)
-(global-set-key (kbd "C-M-f") 'fiplr-find-file)
+(global-set-key (kbd "C-M-f") 'helm-browse-project)
 
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
@@ -100,9 +109,6 @@
             (space-mark   ?\xA0 [?\xA4]     [?_])	; hard space
             (newline-mark ?\n   [?¬ ?\n] [?¬ ?\n])	; end-of-line
             ))
-
-(setq fiplr-ignored-globs '((directories (".git" ".svn" "node_modules" "_build"))
-                            (files ("*.jpg" "*.png" "*.zip" "*~"))))
 
 ;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
@@ -136,3 +142,7 @@
 ;; https://github.com/glen-dai/highlight-global config
 (global-set-key (kbd "M-+") 'highlight-frame-toggle)
 (global-set-key (kbd "M--") 'clear-highlight-frame)
+
+(eval-after-load "etags"
+  '(progn
+     (ac-etags-setup)))
