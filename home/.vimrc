@@ -155,6 +155,9 @@ Plugin 'endel/vim-github-colorscheme'
 " wtf???
 Plugin 'https://github.com/lmeijvogel/vim-yaml-helper.git'
 
+" crystal
+Plugin 'rhysd/vim-crystal'
+
 " vim-scripts repos
 "Bundle 'L9'
 "Bundle 'FuzzyFinder'
