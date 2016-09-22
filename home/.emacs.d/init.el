@@ -44,9 +44,11 @@
             (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 
 ;; elixir mode
+
 (add-hook 'elixir-mode-hook
           (lambda ()
             (alchemist-mode 1)
+            (ac-alchemist-setup)
             (run-hooks 'ggp-code-modes-hook)))
 
 ;; elisp mode
