@@ -5,6 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(ac-etags-requires 2)
  '(blink-cursor-mode nil)
+ '(cgs-step-search-path "/features/step_definitions/**/*.rb")
  '(column-number-mode t)
  '(custom-safe-themes
    (quote

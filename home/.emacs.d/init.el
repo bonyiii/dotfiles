@@ -41,7 +41,9 @@
             ;;(company-mode 1)
             (whitespace-mode 1)
             (ac-etags-ac-setup)
-            (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
+            (show-paren-mode 1)
+            (add-to-list 'write-file-functions 'delete-trailing-whitespace 'check-parens)
+            ))
 
 ;; elixir mode
 
@@ -61,6 +63,11 @@
           (lambda ()
 ;;            (rubocop-mode 1)
 ;;            (add-hook 'after-save-hook 'rubocop-autocorrect-current-file nil 'make-it-local)
+            (run-hooks 'ggp-code-modes-hook)))
+
+;; feature mode
+(add-hook 'feature-mode-hook
+          (lambda ()
             (run-hooks 'ggp-code-modes-hook)))
 
 (add-hook 'haml-mode-hook
@@ -95,6 +102,9 @@
 
 ;; coffee mode
 (setq coffee-tab-width 2)
+(add-hook 'coffee-mode-hook
+          (lambda ()
+            (run-hooks 'ggp-code-modes-hook)))
 
 ;; keybinds
 (global-set-key (kbd "C-6") 'company-complete)
@@ -144,6 +154,8 @@
 ;; https://github.com/glen-dai/highlight-global config
 (global-set-key (kbd "M-+") 'highlight-frame-toggle)
 (global-set-key (kbd "M--") 'clear-highlight-frame)
+(global-unset-key (kbd "M-v"))
+(global-set-key (kbd "M-c") 'scroll-down-command)
 
 (eval-after-load "etags"
   '(progn
