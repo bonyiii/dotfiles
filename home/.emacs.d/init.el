@@ -27,7 +27,7 @@
     (package-install package)))
 
 ;; theme
-(load-theme 'base16-monokai-dark)
+(load-theme 'base16-monokai)
 
 ;; global modes
 (which-key-mode t)
