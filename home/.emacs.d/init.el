@@ -25,6 +25,7 @@
        'auto-complete
        'ac-etags
        'web-mode
+       'magit
        'smartparens
        'which-key))
 
@@ -98,6 +99,7 @@
     ad-do-it))
 (add-hook 'web-mode-hook
           (lambda ()
+            (smartparens-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
 (setq web-mode-markup-indent-offset 2)
@@ -108,6 +110,7 @@
 ;; javascript mode
 (add-hook 'js-mode-hook
           (lambda ()
+            (smartparens-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
 ;; coffee mode
