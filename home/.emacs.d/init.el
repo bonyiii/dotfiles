@@ -5,9 +5,15 @@
 
 ;; set up packages
 (require 'package)
+;;(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+;;                         ;;                         ("marmalade" . "https://marmalade-repo.org/packages/")
+;;                                                  ("marmalade" . "https://ojab.ru/marmalade/")
+;;                                                  ("melpa" . "https://melpa.org/packages/")))
+
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
+
 (package-initialize)
 (setq ggp-required-packages
       (list
@@ -19,6 +25,7 @@
        'auto-complete
        'ac-etags
        'web-mode
+       'smartparens
        'which-key))
 
 (dolist (package ggp-required-packages)
@@ -26,8 +33,10 @@
     (package-refresh-contents)
     (package-install package)))
 
+(require 'smartparens-config)
+
 ;; theme
-(load-theme 'base16-monokai-dark)
+(load-theme 'base16-monokai)
 
 ;; global modes
 (which-key-mode t)
@@ -61,6 +70,7 @@
           (lambda ()
 ;;            (rubocop-mode 1)
 ;;            (add-hook 'after-save-hook 'rubocop-autocorrect-current-file nil 'make-it-local)
+            (smartparens-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
 ;; feature mode
@@ -158,3 +168,16 @@
 (eval-after-load "etags"
   '(progn
      (ac-etags-setup)))
+
+(require 'helm-etags+)
+(global-set-key "\M-." 'helm-etags+-select)
+(global-set-key "\M-*" 'helm-etags+-history-go-back)
+;;       `M-.' default use symbol under point as tagname
+;;       `C-uM-.' use pattern you typed as tagname
+
+;; AutoSave on focus loss
+;; public_html/electool/procurementtool/app/models/
+(defun save-all ()
+  (interactive)
+  (save-some-buffers t))
+(add-hook 'focus-out-hook 'save-all)
