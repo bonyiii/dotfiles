@@ -55,9 +55,11 @@
             ))
 
 ;; elixir mode
+
 (add-hook 'elixir-mode-hook
           (lambda ()
             (alchemist-mode 1)
+            (ac-alchemist-setup)
             (run-hooks 'ggp-code-modes-hook)))
 
 ;; elisp mode
@@ -176,7 +178,7 @@
 ;;       `C-uM-.' use pattern you typed as tagname
 
 ;; AutoSave on focus loss
-;; public_html/electool/procurementtool/app/models/
+;; http://stackoverflow.com/questions/1230245/how-to-automatically-save-files-on-lose-focus-in-emacs
 (defun save-all ()
   (interactive)
   (save-some-buffers t))
