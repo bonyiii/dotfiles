@@ -12,7 +12,8 @@
 
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("milkboxmelpa" . "http://melpa.milkbox.net/packages/")))
 
 (package-initialize)
 (setq ggp-required-packages
@@ -21,12 +22,15 @@
        'base16-theme
        'elixir-mode
        'helm-git-grep
+       'helm-ag
        'helm-ls-git
        'auto-complete
        'ac-etags
        'web-mode
        'magit
        'smartparens
+       'avy
+       'elscreen
        'which-key))
 
 (dolist (package ggp-required-packages)
@@ -42,12 +46,13 @@
 ;; global modes
 (which-key-mode t)
 ;;(cua-mode t)
+(elscreen-start)
 
 ;; programming modes
 (add-hook 'ggp-code-modes-hook
           (lambda ()
             (linum-mode 1)
-;; commented out since now i use ac-etags
+            ;; commented out since now i use ac-etags
             ;;(company-mode 1)
             (whitespace-mode 1)
             (ac-etags-ac-setup)
@@ -71,8 +76,8 @@
 ;; ruby mode
 (add-hook 'ruby-mode-hook
           (lambda ()
-;;            (rubocop-mode 1)
-;;            (add-hook 'after-save-hook 'rubocop-autocorrect-current-file nil 'make-it-local)
+            ;; (rubocop-mode 1)
+            ;; (add-hook 'after-save-hook 'rubocop-autocorrect-current-file nil 'make-it-local)
             (smartparens-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
@@ -130,10 +135,10 @@
 ;;(global-set-key (kbd "C-x <prior>") 'windmove-left)
 ;;(global-set-key (kbd "C-x <next>") 'windmove-right)
 (setq whitespace-display-mappings
-          '((space-mark   ?\    [?\xB7]     [?.])	; space
-            (space-mark   ?\xA0 [?\xA4]     [?_])	; hard space
-            (newline-mark ?\n   [?¬ ?\n] [?¬ ?\n])	; end-of-line
-            ))
+      '((space-mark   ?\    [?\xB7]     [?.])	; space
+        (space-mark   ?\xA0 [?\xA4]     [?_])	; hard space
+        (newline-mark ?\n   [?¬ ?\n] [?¬ ?\n])	; end-of-line
+        ))
 
 ;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
@@ -186,3 +191,31 @@
   (interactive)
   (save-some-buffers t))
 (add-hook 'focus-out-hook 'save-all)
+
+;; http://www.flycheck.org/manual/latest/index.html
+(require 'flycheck)
+
+;; Add flycheck javascript-jshint checker to web mode
+(with-eval-after-load 'flycheck
+  (flycheck-add-mode 'javascript-jshint 'web-mode))
+
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(javascript-jshint)))
+
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; disable json-jsonlist checking for json files
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+          '(json-jsonlist)))
+
+;; for better jsx syntax-highlighting in web-mode
+;; - courtesy of Patrick @halbtuerke
+(defadvice web-mode-highlight-part (around tweak-jsx activate)
+  (if (equal web-mode-content-type "jsx")
+    (let ((web-mode-enable-part-face nil))
+      ad-do-it)
+    ad-do-it))
