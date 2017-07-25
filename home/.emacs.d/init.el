@@ -65,6 +65,7 @@
 (add-hook 'elixir-mode-hook
           (lambda ()
             (alchemist-mode 1)
+            (smartparens-mode 1)
             (ac-alchemist-setup)
             (run-hooks 'ggp-code-modes-hook)))
 
@@ -211,6 +212,9 @@
 (setq-default flycheck-disabled-checkers
   (append flycheck-disabled-checkers
           '(json-jsonlist)))
+
+;; Avy shortcuts
+(global-set-key (kbd "C-j") 'avy-goto-char-timer)
 
 ;; for better jsx syntax-highlighting in web-mode
 ;; - courtesy of Patrick @halbtuerke
