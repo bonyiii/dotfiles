@@ -127,10 +127,12 @@
 
 ;; keybinds
 (global-set-key (kbd "C-6") 'company-complete)
-(global-set-key (kbd "C-M-f") 'helm-browse-project)
+(global-set-key (kbd "C-M-g") 'helm-browse-project)
 
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
+;; vim like word under cusror search
+(global-set-key (kbd "C-#") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 ;;(global-set-key (kbd "C-x <prior>") 'windmove-left)
