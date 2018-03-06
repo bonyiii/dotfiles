@@ -8,7 +8,7 @@
   br = branch
   last = log -1 HEAD
   prlog = log --graph --pretty=format:'%Cred%h%Creset -%<(52) %s | %Cgreen%ai%Creset%C(auto)%d%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=default --cherry-mark --left-right
-  lg =  log --graph --pretty=format:'%Cred%h%Creset -%<(52) %s | %Cgreen%ai%Creset%C(auto)%d%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=default --cherry-mark --left-right
+  lg =  log --graph --pretty=format:'%Cred%h%Creset -%<(52) %s | %Cgreen%ai%Creset%C(auto)%d%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=default 
   relog = log --graph --branches --remotes --tags --oneline --decorate
 [color]
   branch = auto
@@ -16,6 +16,7 @@
   status = auto
 [merge]
   tool = kdiff3
+  ff = only
 [push]
   default = current
 [init]
