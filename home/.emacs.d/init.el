@@ -61,7 +61,6 @@
             ))
 
 ;; elixir mode
-
 (add-hook 'elixir-mode-hook
           (lambda ()
             (alchemist-mode 1)
@@ -80,6 +79,7 @@
             ;; (rubocop-mode 1)
             ;; (add-hook 'after-save-hook 'rubocop-autocorrect-current-file nil 'make-it-local)
             (smartparens-mode 1)
+            (flycheck-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
 ;; feature mode
@@ -93,6 +93,8 @@
 
 ;; web mode
 (add-hook 'web-mode-hook 'ac-etags-ac-setup)
+(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.vue$" . web-mode))
 ;; web mode React jsx templates
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.s?css$" . web-mode))
@@ -114,10 +116,10 @@
 (setq web-mode-enable-css-colorization t)
 
 ;; javascript mode
-(add-hook 'js-mode-hook
-          (lambda ()
-            (smartparens-mode 1)
-            (run-hooks 'ggp-code-modes-hook)))
+;;(add-hook 'js-mode-hook
+;;          (lambda ()
+;;            (smartparens-mode 1)
+;;            (run-hooks 'ggp-code-modes-hook)))
 
 ;; coffee mode
 (setq coffee-tab-width 2)
@@ -125,9 +127,16 @@
           (lambda ()
             (run-hooks 'ggp-code-modes-hook)))
 
+;; kotlin mode
+(add-hook 'kotlin-mode-hook
+          (lambda ()
+            (smartparens-mode 1)
+            (flycheck-mode 1)
+            (run-hooks 'ggp-code-modes-hook)))
+
 ;; keybinds
 (global-set-key (kbd "C-6") 'company-complete)
-(global-set-key (kbd "C-M-g") 'helm-browse-project)
+(global-set-key (kbd "C-M-,") 'helm-browse-project)
 
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
@@ -200,7 +209,7 @@
 
 ;; Add flycheck javascript-jshint checker to web mode
 (with-eval-after-load 'flycheck
-  (flycheck-add-mode 'javascript-jshint 'web-mode))
+  (flycheck-add-mode 'javascript-eslint 'web-mode))
 
 ;; disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers
@@ -209,6 +218,10 @@
 
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
+
+(add-hook 'web-mode-hook
+          (lambda()
+            (flycheck-mode 1)))
 
 ;; disable json-jsonlist checking for json files
 (setq-default flycheck-disabled-checkers
