@@ -24,8 +24,8 @@
        'helm-git-grep
        'helm-ag
        'helm-ls-git
-       'auto-complete
-       'ac-etags
+       'company
+       'helm-company
        'web-mode
        'magit
        'smartparens
@@ -52,10 +52,8 @@
 (add-hook 'ggp-code-modes-hook
           (lambda ()
             (linum-mode 1)
-            ;; commented out since now i use ac-etags
-            ;;(company-mode 1)
+            (company-mode 1)
             (whitespace-mode 1)
-            (ac-etags-ac-setup)
             (show-paren-mode 1)
             (add-to-list 'write-file-functions 'delete-trailing-whitespace 'check-parens)
             ))
@@ -65,7 +63,6 @@
           (lambda ()
             (alchemist-mode 1)
             (smartparens-mode 1)
-            (ac-alchemist-setup)
             (run-hooks 'ggp-code-modes-hook)))
 
 ;; elisp mode
@@ -82,6 +79,12 @@
             (flycheck-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
+(add-hook 'python-mode
+          (lambda ()
+            (smartparens-mode 1)
+            (flycheck-mode 1)
+            (run-hooks 'ggp-code-modes-hook)))
+
 ;; feature mode
 (add-hook 'feature-mode-hook
           (lambda ()
@@ -92,7 +95,6 @@
             (run-hooks 'ggp-code-modes-hook)))
 
 ;; web mode
-(add-hook 'web-mode-hook 'ac-etags-ac-setup)
 (add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.vue$" . web-mode))
 ;; web mode React jsx templates
@@ -186,10 +188,6 @@
 (global-set-key (kbd "M--") 'clear-highlight-frame)
 (global-unset-key (kbd "M-v"))
 (global-set-key (kbd "M-c") 'scroll-down-command)
-
-(eval-after-load "etags"
-  '(progn
-     (ac-etags-setup)))
 
 (require 'helm-etags+)
 (global-set-key "\M-." 'helm-etags+-select)

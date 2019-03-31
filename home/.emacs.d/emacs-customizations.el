@@ -19,7 +19,7 @@
  '(mode-require-final-newline t)
  '(package-selected-packages
    (quote
-    (flycheck-kotlin kotlin-mode zoom-window yaml-mode which-key web-mode tabbar smartparens rvm origami mustard-theme multi-web-mode magit init-loader inf-ruby helm-ls-git helm-git-grep helm-ag haml-mode flycheck f elscreen coffee-mode base16-theme avy ag ac-etags ac-alchemist)))
+    (company-mode flycheck-kotlin kotlin-mode zoom-window yaml-mode which-key web-mode tabbar smartparens rvm origami mustard-theme multi-web-mode magit init-loader inf-ruby helm-ls-git helm-git-grep helm-ag haml-mode flycheck f elscreen coffee-mode base16-theme avy ag ac-etags ac-alchemist)))
  '(require-final-newline t)
  '(robe-completing-read-func (quote helm-robe-completing-read))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
