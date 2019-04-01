@@ -52,9 +52,9 @@
 (add-hook 'ggp-code-modes-hook
           (lambda ()
             (linum-mode 1)
-            (company-mode 1)
             (whitespace-mode 1)
             (show-paren-mode 1)
+            (company-mode 1)
             (add-to-list 'write-file-functions 'delete-trailing-whitespace 'check-parens)
             ))
 
@@ -79,7 +79,7 @@
             (flycheck-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
-(add-hook 'python-mode
+(add-hook 'python-mode-hook
           (lambda ()
             (smartparens-mode 1)
             (flycheck-mode 1)
@@ -107,9 +107,11 @@
       (let ((web-mode-enable-part-face nil))
         ad-do-it)
     ad-do-it))
+
 (add-hook 'web-mode-hook
           (lambda ()
             (smartparens-mode 1)
+            (flycheck-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
 (setq web-mode-markup-indent-offset 2)
@@ -217,9 +219,6 @@
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 
-(add-hook 'web-mode-hook
-          (lambda()
-            (flycheck-mode 1)))
 
 ;; disable json-jsonlist checking for json files
 (setq-default flycheck-disabled-checkers
