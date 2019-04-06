@@ -110,14 +110,18 @@
 
 (add-hook 'web-mode-hook
           (lambda ()
+            (setq web-mode-markup-indent-offset 2)
+            (setq web-mode-css-indent-offset 2)
+            (setq web-mode-code-indent-offset 2)
+            (setq web-mode-enable-css-colorization t)
+            (setq web-mode-enable-current-column-highlight t)
+            (setq web-mode-enable-current-element-highlight t)
+            (setq web-mode-style-padding 0)
+            (setq web-mode-script-padding 0)
             (smartparens-mode 1)
             (flycheck-mode 1)
+            (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
             (run-hooks 'ggp-code-modes-hook)))
-
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
-(setq web-mode-enable-css-colorization t)
 
 ;; javascript mode
 ;;(add-hook 'js-mode-hook
