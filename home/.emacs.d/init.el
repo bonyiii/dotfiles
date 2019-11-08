@@ -26,6 +26,7 @@
        'helm-ls-git
        'company
        'company-tern
+       'company-web
        'helm-company
        'web-mode
        'magit
@@ -166,10 +167,12 @@
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 ;;(global-set-key (kbd "C-x <prior>") 'windmove-left)
 ;;(global-set-key (kbd "C-x <next>") 'windmove-right)
+
+;; http://ergoemacs.org/emacs/whitespace-mode.html
 (setq whitespace-display-mappings
       '((space-mark   ?\    [?\xB7]     [?.])	; space
         (space-mark   ?\xA0 [?\xA4]     [?_])	; hard space
-        (newline-mark ?\n   [?¬ ?\n] [?¬ ?\n])	; end-of-line
+        (newline-mark 10   [?¬ ?\n] [?¬ ?\n])	; end-of-line
         ))
 
 ;; store all backup and autosave files in the tmp dir
@@ -211,6 +214,12 @@
 (global-set-key "\M-*" 'helm-etags+-history-go-back)
 ;;       `M-.' default use symbol under point as tagname
 ;;       `C-uM-.' use pattern you typed as tagname
+
+
+;; Reload files if they changed automatically
+;; https://stackoverflow.com/questions/1480572/how-to-have-emacs-auto-refresh-all-buffers-when-files-have-changed-on-disk
+(global-auto-revert-mode t)
+
 
 ;; AutoSave on focus loss
 ;; http://stackoverflow.com/questions/1230245/how-to-automatically-save-files-on-lose-focus-in-emacs
