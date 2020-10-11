@@ -87,6 +87,14 @@
             (flycheck-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
+;; C++ mode
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (smartparens-mode 1)
+            (flycheck-mode 1)
+            (run-hooks 'ggp-code-modes-hook)))
+
+
 ;; feature mode
 (add-hook 'feature-mode-hook
           (lambda ()
@@ -190,7 +198,7 @@
 (eval-after-load 'helm
   '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
 (custom-set-variables
-  '(robe-completing-read-func 'helm-robe-completing-read))
+ '(robe-completing-read-func 'helm-robe-completing-read))
 
 ;; Taken from https://github.com/avdi/.emacs24.d/blob/master/init.el
 (setq abg-emacs-init-file (or load-file-name buffer-file-name))
@@ -245,8 +253,8 @@
 
 ;; disable json-jsonlist checking for json files
 (setq-default flycheck-disabled-checkers
-  (append flycheck-disabled-checkers
-          '(json-jsonlist)))
+              (append flycheck-disabled-checkers
+                      '(json-jsonlist)))
 
 ;; Avy shortcuts
 (global-set-key (kbd "C-j") 'avy-goto-char-timer)
@@ -255,8 +263,8 @@
 ;; - courtesy of Patrick @halbtuerke
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
   (if (equal web-mode-content-type "jsx")
-    (let ((web-mode-enable-part-face nil))
-      ad-do-it)
+      (let ((web-mode-enable-part-face nil))
+        ad-do-it)
     ad-do-it))
 
 ;; https://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
