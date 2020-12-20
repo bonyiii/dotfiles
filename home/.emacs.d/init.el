@@ -12,8 +12,7 @@
 
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("milkboxmelpa" . "http://melpa.milkbox.net/packages/")))
+                         ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
 (setq ggp-required-packages
@@ -21,6 +20,7 @@
        'alchemist
        'base16-theme
        'elixir-mode
+       'dotenv-mode
        'helm-git-grep
        'helm-ag
        'helm-ls-git
