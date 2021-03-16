@@ -104,6 +104,10 @@
           (lambda ()
             (run-hooks 'ggp-code-modes-hook)))
 
+(add-hook 'racket-mode-hook
+          (lambda ()
+            (run-hooks 'ggp-code-modes-hook)))
+
 ;; web mode
 (add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.vue$" . web-mode))
