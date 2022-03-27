@@ -10,14 +10,14 @@
 ;;                                                  ("marmalade" . "https://ojab.ru/marmalade/")
 ;;                                                  ("melpa" . "https://melpa.org/packages/")))
 
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
+(setq package-archives '(("org" . "https://orgmode.org/elpa/")
+                         ("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")))
 
 (package-initialize)
 (setq ggp-required-packages
       (list
-       'alchemist
        'base16-theme
        'elixir-mode
        'dotenv-mode
@@ -25,22 +25,23 @@
        'helm-ag
        'helm-ls-git
        'company
-       'company-tern
        'company-web
        'helm-company
        'web-mode
        'magit
-       'smartparens
        'avy
        'elscreen
        'which-key))
+
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-reload-all)
 
 (dolist (package ggp-required-packages)
   (when (not (package-installed-p package))
     (package-refresh-contents)
     (package-install package)))
-
-(require 'smartparens-config)
 
 ;; theme
 (load-theme 'base16-monokai)
@@ -57,14 +58,13 @@
             (whitespace-mode 1)
             (show-paren-mode 1)
             (company-mode 1)
+            (yas-minor-mode 1)
             (add-to-list 'write-file-functions 'delete-trailing-whitespace 'check-parens)
             ))
 
 ;; elixir mode
 (add-hook 'elixir-mode-hook
           (lambda ()
-            (alchemist-mode 1)
-            (smartparens-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
 ;; elisp mode
@@ -77,20 +77,17 @@
           (lambda ()
             ;; (rubocop-mode 1)
             ;; (add-hook 'after-save-hook 'rubocop-autocorrect-current-file nil 'make-it-local)
-            (smartparens-mode 1)
             (flycheck-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
 (add-hook 'python-mode-hook
           (lambda ()
-            (smartparens-mode 1)
             (flycheck-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
 ;; C++ mode
 (add-hook 'c++-mode-hook
           (lambda ()
-            (smartparens-mode 1)
             (flycheck-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
@@ -132,26 +129,16 @@
             (setq web-mode-enable-current-element-highlight t)
             (setq web-mode-style-padding 0)
             (setq web-mode-script-padding 0)
-            (smartparens-mode 1)
             (flycheck-mode 1)
-            (set (make-local-variable 'company-backends) '(company-tern company-css company-web-html company-yasnippet company-files))
+            (jasminejs-mode 1)
+            (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
             (run-hooks 'ggp-code-modes-hook)))
 
-;; Enable JavaScript completion between <script>...</script> etc.
-(advice-add 'company-tern :before
-            #'(lambda (&rest _)
-                (if (equal major-mode 'web-mode)
-                    (let ((web-mode-cur-language
-                           (web-mode-language-at-pos)))
-                      (if (or (string= web-mode-cur-language "javascript")
-                              (string= web-mode-cur-language "jsx"))
-                          (unless tern-mode (tern-mode))
-                        (if tern-mode (tern-mode -1)))))))
+(add-hook 'jasminejs-mode-hook (lambda () (jasminejs-add-snippets-to-yas-snippet-dirs)))
 
 ;; javascript mode
 ;;(add-hook 'js-mode-hook
 ;;          (lambda ()
-;;            (smartparens-mode 1)
 ;;            (run-hooks 'ggp-code-modes-hook)))
 
 ;; coffee mode
@@ -163,7 +150,6 @@
 ;; kotlin mode
 (add-hook 'kotlin-mode-hook
           (lambda ()
-            (smartparens-mode 1)
             (flycheck-mode 1)
             (run-hooks 'ggp-code-modes-hook)))
 
@@ -291,3 +277,6 @@
   "Revert buffer without confirmation."
   (interactive)
   (revert-buffer :ignore-auto :noconfirm))
+
+
+(setq scroll-conservatively 101)
