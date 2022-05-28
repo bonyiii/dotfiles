@@ -30,6 +30,7 @@
        'web-mode
        'magit
        'avy
+       'tide
        'elscreen
        'which-key))
 
@@ -105,11 +106,24 @@
           (lambda ()
             (run-hooks 'ggp-code-modes-hook)))
 
+(add-hook 'typescript-mode-hook
+          (lambda ()
+            (tide-setup)
+            (flycheck-mode 1)
+            (eldoc-mode +1)
+            (tide-hl-identifier-mode +1)
+            (flycheck-add-mode 'typescript-tslint 'web-mode)
+            (run-hooks 'ggp-code-modes-hook)))
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+
+
 ;; web mode
 (add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.vue$" . web-mode))
 ;; web mode React jsx templates
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.s?css$" . web-mode))
 ;; web mode elixir template
 (add-to-list 'auto-mode-alist '("\\.eex$" . web-mode))
@@ -129,6 +143,8 @@
             (setq web-mode-enable-current-element-highlight t)
             (setq web-mode-style-padding 0)
             (setq web-mode-script-padding 0)
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (tide-mode-hook))
             (flycheck-mode 1)
             (jasminejs-mode 1)
             (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))

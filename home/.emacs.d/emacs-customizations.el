@@ -18,7 +18,7 @@
  '(kotlin-tab-width 2)
  '(mode-require-final-newline t)
  '(package-selected-packages
-   '(robe jasminejs-mode yasnippet nand2tetris slime racket-mode smart-tab dotenv-mode ## gnu-elpa-keyring-update cider company-web company-mode flycheck-kotlin kotlin-mode init-loader inf-ruby helm-ls-git helm-git-grep helm-ag haml-mode flycheck f elscreen coffee-mode base16-theme avy ag))
+   '(eglot tide robe jasminejs-mode yasnippet nand2tetris slime racket-mode smart-tab dotenv-mode ## gnu-elpa-keyring-update cider company-web company-mode flycheck-kotlin kotlin-mode init-loader inf-ruby helm-ls-git helm-git-grep helm-ag haml-mode flycheck f elscreen coffee-mode base16-theme avy ag))
  '(python-indent-offset 2)
  '(require-final-newline t)
  '(robe-completing-read-func 'helm-robe-completing-read)
