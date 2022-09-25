@@ -224,8 +224,8 @@
 (global-set-key (kbd "M-c") 'scroll-down-command)
 
 (require 'helm-etags+)
-(global-set-key "\M-." 'helm-etags+-select)
-(global-set-key "\M-*" 'helm-etags+-history-go-back)
+;(global-set-key "\M-." 'helm-etags+-select)
+;(global-set-key "\M-*" 'helm-etags+-history-go-back)
 ;;       `M-.' default use symbol under point as tagname
 ;;       `C-uM-.' use pattern you typed as tagname
 
@@ -296,3 +296,5 @@
 
 
 (setq scroll-conservatively 101)
+
+(define-key eglot-mode-map (kbd "M-.") 'xref-find-definitions)
