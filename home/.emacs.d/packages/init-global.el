@@ -2,6 +2,9 @@
 
 ;;; Code:
 
+;; Make sure emacs first frame starts up maximized
+;; https://emacs.stackexchange.com/questions/2999/how-to-maximize-my-emacs-frame-on-start-up
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 ;; Show line numbers
 (global-display-line-numbers-mode t)
