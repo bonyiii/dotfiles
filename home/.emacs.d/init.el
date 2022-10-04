@@ -45,9 +45,17 @@
 (update-to-load-path (expand-file-name "packages" user-emacs-directory))
 ;;(update-to-load-path (expand-file-name "packages" "~/.emacs.d/")
 
+;; Do not use `init.el` for `custom-*` code - use `custom-file.el`.
+(setq custom-file "~/.emacs.d/custom-file.el")
+
+;; Assuming that the code in custom-file is execute before the code
+;; ahead of this line is not a safe assumption. So load this file
+;; proactively.
+;;(load-file custom-file)
 
 (require 'init-global)
 (require 'init-whitespace)
+(require 'init-company)
 (require 'init-helm)
 (require 'init-flycheck)
 (require 'init-smartparens)
@@ -59,6 +67,7 @@
 ;; Programming modes
 (require 'init-web-mode)
 (require 'init-ruby-mode)
+(require 'init-editorconfig)
 ;;; my-init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

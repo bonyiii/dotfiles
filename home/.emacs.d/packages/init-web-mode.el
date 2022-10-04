@@ -6,6 +6,7 @@
 (use-package web-mode
   :mode (
 	 ".js$"
+	 ".ts$"
 	 ".vue$"
 	 ".jsx$"
 	 ".s?css$"
@@ -29,6 +30,7 @@
    web-mode-enable-auto-opening t
    web-mode-enable-auto-pairing t
    web-mode-enable-auto-indentation t
+
 
    web-mode-enable-css-colorization t
    web-mode-enable-current-column-highlight t

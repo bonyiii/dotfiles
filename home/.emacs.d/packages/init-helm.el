@@ -4,7 +4,7 @@
   :bind(("M-x" . helm-M-x)
 	;;("C-x C-f" . helm-find-files)
 	("C-x b" . helm-buffers-list)
-	("M-," . helm-browse-project)
+	("M-[" . hel-browse-project)
 	("M-y" . helm-show-kill-ring)
 	("C-x c o" . helm-occur)
 	("C-x r b" . helm-filtered-bookmarks)
@@ -22,7 +22,6 @@
 (use-package helm-ag
   :defer t
   :bind(
-	("M-]" . helm-ag-project-root)
 	("C-x s" . helm-ag-project-root)))
 
 (provide 'init-helm)
