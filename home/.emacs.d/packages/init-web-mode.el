@@ -31,7 +31,6 @@
    web-mode-enable-auto-pairing t
    web-mode-enable-auto-indentation t
 
-
    web-mode-enable-css-colorization t
    web-mode-enable-current-column-highlight t
    web-mode-enable-current-element-highlight t)

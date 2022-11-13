@@ -51,7 +51,14 @@
 ;; Assuming that the code in custom-file is execute before the code
 ;; ahead of this line is not a safe assumption. So load this file
 ;; proactively.
-;;(load-file custom-file)
+;;(Load-File Custom-File)
+
+(load "~/.emacs.d/init.d/transpose-frame.el")
+(load "~/.emacs.d/init.d/highlight-global.el")
+;; https://github.com/glen-dai/highlight-global config
+(global-set-key (kbd "M-+") 'highlight-frame-toggle)
+(global-set-key (kbd "M--") 'clear-highlight-frame)
+
 
 (require 'init-global)
 (require 'init-whitespace)
@@ -68,6 +75,7 @@
 (require 'init-web-mode)
 (require 'init-ruby-mode)
 (require 'init-editorconfig)
+(require 'init-yaml)
 ;;; my-init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -85,3 +93,5 @@
  '(avy-lead-face ((t (:background "#51afef" :foreground "#870000" :weight bold))))
  '(flycheck-posframe-face ((t (:foreground "Green1"))))
  '(flycheck-posframe-info-face ((t (:foreground "Green1")))))
+
+(setq-default truncate-lines 1)
