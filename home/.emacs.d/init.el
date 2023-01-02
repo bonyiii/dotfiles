@@ -70,12 +70,13 @@
 (require 'init-which-key)
 (require 'init-avy)
 (require 'init-lsp)
+(require 'init-tide)
 
 ;; Programming modes
 (require 'init-web-mode)
 (require 'init-ruby-mode)
 (require 'init-editorconfig)
-(require 'init-yaml)
+;; (require 'init-yaml)
 ;;; my-init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

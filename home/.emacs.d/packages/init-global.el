@@ -46,6 +46,14 @@
 (setq auto-revert-check-vc-info t)
 
 
+;; http://stackoverflow.com/questions/1230245/how-to-automatically-save-files-on-lose-focus-in-emacs
+(defun save-all ()
+  (interactive)
+  (save-some-buffers t))
+
+(add-hook 'focus-out-hook 'save-all)
+
+
 ;; Beep
 (setq visible-bell t)
 (setq ring-bell-function 'ignore)

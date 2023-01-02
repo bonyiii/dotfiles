@@ -17,7 +17,7 @@
   :hook(
 	;; This is the magic connecting the derived mode with lsp.
 	;; Actually do we need derived mode at all, in this case?
-	(web-react-mode . lsp-deferred))
+	(web-react-mode . tide-setup))
   :config
   (setq
    web-mode-markup-indent-offset 2
