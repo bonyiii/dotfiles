@@ -10,4 +10,9 @@
           (newline-mark 10   [?¬ ?\n] [?¬ ?\n])	; end-of-line
           )))
 
+;; Delete trailing whitespace on save
+(defun nuke_traling ()
+  (add-hook 'before-save-hook #'delete-trailing-whitespace nil t))
+;;(add-hook 'focus-out-hook #'nuke_traling)
+
 (provide 'init-whitespace)
