@@ -14,8 +14,10 @@
   :ensure t
   :config
   (setq company-tooltip-align-annotations t)
-  (add-hook 'before-save-hook 'tide-format-before-save)
-  (add-hook 'web-react-mode-hook #'setup-tide-mode))
+  ;;   (add-hook 'before-save-hook 'tide-format-before-save)
+  ;;(add-hook 'web-react-mode-hook #'setup-tide-mode))
+  )
 
 
 (provide 'init-tide)
+;;; init-tide.el ends here

@@ -17,7 +17,7 @@
 	:map helm-map
 	("TAB" . helm-execute-persistent-action)
 	)
-  :preface (require 'helm-config)
+
   :config (helm-mode 1))
 
 (use-package helm-ag

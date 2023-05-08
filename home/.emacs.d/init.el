@@ -64,35 +64,18 @@
 (require 'init-whitespace)
 (require 'init-company)
 (require 'init-helm)
-(require 'init-flycheck)
+
 (require 'init-smartparens)
 (require 'init-yasnippet)
 (require 'init-which-key)
 (require 'init-avy)
 (require 'init-lsp)
 (require 'init-tide)
+(require 'init-flycheck)
 
 ;; Programming modes
 (require 'init-web-mode)
 (require 'init-ruby-mode)
-(require 'init-editorconfig)
+;; (require 'init-editorconfig)
 ;; (require 'init-yaml)
 ;;; my-init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(delete-selection-mode nil)
- '(package-selected-packages
-   '(flycheck-popup-tip helm-lsp lsp-ui lsp-mode smartparens flycheck-posframe yasnippet which-key web-mode use-package tide smart-tab slime robe racket-mode nand2tetris magit kotlin-mode jasminejs-mode init-loader helm-ls-git helm-git-grep helm-company helm-ag haml-mode gnu-elpa-keyring-update flycheck-kotlin f elscreen elixir-mode eglot dotenv-mode company-web company-tabnine coffee-mode cider base16-theme avy ag)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(avy-lead-face ((t (:background "#51afef" :foreground "#870000" :weight bold))))
- '(flycheck-posframe-face ((t (:foreground "Green1"))))
- '(flycheck-posframe-info-face ((t (:foreground "Green1")))))
-
-(setq-default truncate-lines 1)

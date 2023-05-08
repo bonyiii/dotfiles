@@ -21,7 +21,11 @@
 
 
 ;; Make esc quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+;;(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+;; Prevent closing split windows/panes by hitting escape
+;; https://stackoverflow.com/questions/15874433/emacs-how-to-fix-annoying-escape-behavior-when-in-split-windows
+(global-unset-key (kbd "ESC ESC ESC"))
 
 
 ;; store all backup and autosave files in the tmp dir
@@ -67,5 +71,8 @@
       ;; scroll-step 1
       )
 (setq comint-scroll-show-maximum-output t) ;; for shell-mode
+
+
+(setq-default truncate-lines 1)
 
 (provide 'init-global)
